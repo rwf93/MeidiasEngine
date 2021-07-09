@@ -1,8 +1,8 @@
+#include "stdafx.h"
+
 #include "render.h"
 #include "window.h"
 #include "util.h"
-
-#include <string.h>
 
 extern const char* g_AppName;
 extern const char* g_EngineName;
@@ -11,10 +11,11 @@ static void vk_setup_instance_extensions();
 static void vk_setup_validation_layers();
 static void vk_setup_instance();
 
-
 void render_vulkan_setup()
 {
 	render_context = malloc(sizeof(struct vk_renderer_impl_context));
+	CHECK_ERROR(!render_context,
+		"Couldn't Allocate render_context");
 	memset(render_context, 0, sizeof(render_context));
 	
 
@@ -53,6 +54,8 @@ void vk_setup_validation_layers()
 		"Error at vkEnumerateInstanceLayerProperties (counting)");
 
 	VkLayerProperties* instance_properties = malloc(sizeof(VkLayerProperties) * instance_layer_count);
+	CHECK_ERROR(!instance_properties,
+		"Couldn't allocate instance_properties");
 	CHECK_ERROR(vkEnumerateInstanceLayerProperties(&instance_layer_count, instance_properties) != VK_SUCCESS,
 		"vkEnumerateInstanceLayerProperties (instance properties)");
 
@@ -74,7 +77,7 @@ void vk_setup_validation_layers()
 
 	for (int i = 0; i < ARRAY_SIZE(layers_we_want); i++)
 	{
-		render_context->validation_layers[i] = layers_we_want[i];
+		render_context->validation_layers[i] = (char*)layers_we_want[i];
 	}
 	
 	render_context->validation_layers_count = ARRAY_SIZE(layers_we_want);

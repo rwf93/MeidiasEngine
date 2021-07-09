@@ -3,7 +3,6 @@
 
 #define ARRAY_SIZE(arr) sizeof(arr) / sizeof(arr[0])
 
-
 #define __FILENAME__    (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
 #define CHECK_ERROR(condition, ...) if(condition)												\
 	{																							\

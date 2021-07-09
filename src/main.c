@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "stdafx.h"
 
 #include "window.h"
 #include "render.h"
@@ -8,8 +8,7 @@
 const char* g_AppName = "Meidias";
 const char* g_EngineName = "MeidiasEngine";
 
-
-int main(int argc, char* argv[])
+int main()
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
