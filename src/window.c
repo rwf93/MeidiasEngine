@@ -1,7 +1,6 @@
-#include "stdafx.h"
+#include <stdafx.h>
 
-#include "window.h"
-#include "util.h"
+#include <window.h>
 
 extern const char* g_AppName;
 
@@ -15,9 +14,9 @@ void setup_window()
 	CHECK_ERROR(
 		!(window_container->window = SDL_CreateWindow(
 			g_AppName,
-			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
+			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 			800, 600,
-			SDL_WINDOW_SHOWN | SDL_WINDOW_VULKAN)),
+			SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL)),
 		"SDL_CreateWindow Failure %s\n", (char*)SDL_GetError());
 
 	window_container->running = 1;

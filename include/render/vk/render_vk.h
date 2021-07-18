@@ -1,5 +1,5 @@
-#ifndef RENDER_H
-#define RENDER_H
+#ifndef RENDER_VK_H
+#define RENDER_VK_H
 
 #define VK_USE_PLATFORM_WIN32_KHR
 #include <vulkan/vulkan.h>
@@ -26,6 +26,5 @@ struct vk_renderer_impl_context* render_context;
 
 void render_vulkan_setup();
 void render_vulkan_destroy();
-
 
 #endif // !RENDER_H

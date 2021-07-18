@@ -1,0 +1,15 @@
+set(GLEW_INSTALL_DIR ${CMAKE_BINARY_DIR}/thirdparty/GLEW)
+set(GLEW_INCLUDE_DIR ${GLEW_INSTALL_DIR}/include)
+set(GLEW_LINK_DIR ${GLEW_INSTALL_DIR}/lib)
+set(GLEW_BIN_DIR ${GLEW_INSTALL_DIR}/bin)
+
+ExternalProject_Add(GLEW
+    PREFIX ${GLEW_INSTALL_DIR}
+    SOURCE_DIR ${THIRDPARTY_SOURCE_DIR}/GLEW/glew_git
+    CMAKE_ARGS 
+        -DCMAKE_INSTALL_PREFIX:PATH=${GLEW_INSTALL_DIR}
+)
+
+include_directories(${GLEW_INCLUDE_DIR})
+add_dependencies(${PROJECT_NAME} GLEW)
+target_link_libraries(${PROJECT_NAME} ${GLEW_LINK_DIR}/glewd.lib)

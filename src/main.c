@@ -1,8 +1,8 @@
-#include "stdafx.h"
+#include <stdafx.h>
 
-#include "window.h"
-#include "render.h"
-#include "util.h"
+#include <window.h>
+
+#include <render/ogl/render_ogl.h>
 
 // REQUIRED BY SDL AND VULKAN
 const char* g_AppName = "Meidias";
@@ -18,14 +18,19 @@ int main()
 
     setup_window();
 
-    render_vulkan_setup();
+    render_opengl_setup();
 
     while (window_container->running)
     {
+
+        render_begin_ogl_frame();
+
+        render_end_ogl_frame();
+
         handle_window_events();
     }
 
-    render_vulkan_destroy();
+    render_opengl_destroy();
 
     destroy_window();
 

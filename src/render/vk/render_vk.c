@@ -1,8 +1,7 @@
-#include "stdafx.h"
+#include <stdafx.h>
 
-#include "render.h"
-#include "window.h"
-#include "util.h"
+#include <render/vk/render_vk.h>
+#include <window.h>
 
 extern const char* g_AppName;
 extern const char* g_EngineName;
